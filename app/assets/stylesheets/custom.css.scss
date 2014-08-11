@@ -172,3 +172,9 @@ input {
   @extend .form-group;
   @extend .danger;
 }
+
+/* Migrating from 2.x to 3.0 */
+
+.alert-error {
+  @extend .alert-danger
+}
