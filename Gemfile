@@ -1,11 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-gem 'bootstrap-sass'
-gem 'sprockets'
-gem 'bcrypt'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -28,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -40,7 +36,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~>3.0'
+  gem 'capybara', '~>2.0'
+  gem 'factory_girl_rails', '~>4.0'
 end
+
+gem 'bootstrap-sass', '~>3.0'
+gem 'sprockets', '~>2.0'
