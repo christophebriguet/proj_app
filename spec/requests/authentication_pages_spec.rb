@@ -149,8 +149,6 @@ describe "AuthenticationPages" do
     
     describe "as admin user" do
       let(:admin_user) { FactoryGirl.create(:admin) }
-      #let(:non_admin) { FactoryGirl.create(:user) }
-      #let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
 
       before { sign_in admin_user, no_capybara: true }
 
