@@ -43,3 +43,6 @@ end
 
 gem 'bootstrap-sass', '~>3.0'
 gem 'sprockets', '~>2.0'
+gem 'faker', '~>1.0'
+gem 'will_paginate', '~>3.0'
+gem 'bootstrap-will_paginate', '~>0.0'

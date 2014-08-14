@@ -1,6 +1,6 @@
-require 'rails_helper'
+require 'spec_helper'
 
-describe "Static pages", :type => :feature do
+describe "Static pages" do
   
   subject { page }
   
