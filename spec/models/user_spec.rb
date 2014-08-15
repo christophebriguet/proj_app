@@ -24,7 +24,6 @@ describe User do
       @user.save!
       @user.toggle!(:admin)
     end
-
     it { should be_admin }
   end
 
@@ -120,5 +119,20 @@ describe User do
     it do
       expect(@user.remember_token).not_to be_blank
     end
+  end
+  
+  describe 'scopes.admin' do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+    it { expect(User.admin).to eq [@user] } 
+  end  
+  
+  describe 'scopes.not_admin' do
+    before do
+      @user.save!
+    end
+    it { expect(User.not_admin).to eq [@user] } 
   end
 end

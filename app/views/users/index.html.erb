@@ -1,6 +1,19 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<div class="row admin-bar">
+  <div class="col-md-6">
+    <%= link_to 'All Users', users_path, class: "btn btn-default" %>
+    <%= link_to 'Administrators', scoped_users_path('admin'), class: "btn btn-default" %>
+    <%= link_to 'Users', scoped_users_path('not_admin'), class: "btn btn-default" %>
+  </div>
+  <div class="col-md-6">
+    <%= pluralize(User.admin.count, "Administrator") %>
+     | <%= pluralize(User.not_admin.count, "User") %> 
+     | <%= pluralize(User.count, "All User") %>
+  </div>
+</div>
+
 <%= will_paginate %>
 
 <ul class="users">

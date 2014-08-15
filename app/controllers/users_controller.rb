@@ -3,13 +3,14 @@ class UsersController < ApplicationController
   before_action :correct_user,              only: [:edit, :update]
   before_action :admin_user, :same_user,    only: [:destroy]
   before_action :signed_out_user,           only: [:new, :create]
+  before_action :set_user,                  only: [:show, :edit, :update]
   
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 8)
+    @users = @users.send(params[:scope]) if params[:scope]
   end
   
   def show
-    @user = User.find(params[:id])
   end
   
   def new
@@ -28,11 +29,9 @@ class UsersController < ApplicationController
   end
     
   def edit
-    @user = User.find(params[:id])
   end
   
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
     redirect_to users_url
-  end  
+  end
 
   private
 
@@ -78,5 +77,10 @@ class UsersController < ApplicationController
     def same_user
       @user = User.find(params[:id])
       redirect_to(root_url) if current_user?(@user)
+    end
+  
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
     end
 end

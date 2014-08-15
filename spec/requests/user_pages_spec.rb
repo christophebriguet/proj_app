@@ -13,6 +13,8 @@ describe "UserPages" do
 
     it { should have_title('All users') }
     it { should have_content('All users') }
+    it { should have_content('1 User') }
+   
     
     describe "pagination" do
 
@@ -22,7 +24,7 @@ describe "UserPages" do
       it { should have_selector('div.pagination') }
 
       it "should list each user" do
-        User.paginate(page: 1).each do |user|
+        User.paginate(page: 1, per_page: 8).each do |user|
           expect(page).to have_selector('li', text: user.name)
         end
       end

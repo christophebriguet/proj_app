@@ -14,7 +14,10 @@ class User < ActiveRecord::Base
   def defaults
     self.admin = false if self.admin.nil?
   end
-
+  
+  scope :admin, -> { where(admin: true) }
+  scope :not_admin, -> { where(admin: false) }
+  
   has_secure_password
   
   validates :password, length: { minimum: 6 }
