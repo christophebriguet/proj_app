@@ -8,9 +8,11 @@
     <%= link_to 'Users', scoped_users_path('not_admin'), class: "btn btn-default" %>
   </div>
   <div class="col-md-6">
-    <%= pluralize(User.admin.count, "Administrator") %>
-     | <%= pluralize(User.not_admin.count, "User") %> 
-     | <%= pluralize(User.count, "All User") %>
+    <span class="admin-count">
+      <%= pluralize(User.admin.count, "Administrator") %>
+       | <%= pluralize(User.not_admin.count, "User") %> 
+       | <%= pluralize(User.count, "All User") %>
+    </span>
   </div>
 </div>
 
