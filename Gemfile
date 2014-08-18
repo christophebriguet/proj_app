@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-its', '~>1.0'
   gem 'capybara', '~>2.0'
   gem 'factory_girl_rails', '~>4.0'
+  gem 'transpec', '~> 2.3'
 end
 
 gem 'bootstrap-sass', '~>3.0'

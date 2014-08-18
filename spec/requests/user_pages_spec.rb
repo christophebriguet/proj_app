@@ -90,17 +90,16 @@ describe "UserPages" do
       end      
     end 
       
-    describe "pagination" do
-      
+    describe "pagination" do    
       it "should paginate the feed" do
         30.times { FactoryGirl.create(:micropost, user: user, content: "test of microposts") }
         visit root_path
-        page.should have_selector("div.pagination")
+        expect(page).to have_selector("div.pagination")
       end      
            
       it "should list each micropost" do
         user.feed.paginate(page: 1).each do |item|
-          page.should have_selector("li##{item.id}", text: item.content)
+          expect(page).to have_selector("li##{item.id}", text: item.content)
         end  
       end
     end        
