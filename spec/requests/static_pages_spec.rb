@@ -16,6 +16,9 @@ describe "Static pages" do
 
     it_should_behave_like "all static pages"
     it { should_not have_title('| Home') }
+    describe "Counter" do
+      it { should have_selector('p', text:  "Number of users: 1") }
+    end  
     
     describe "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
