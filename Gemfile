@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails', '~>3.0'
   gem 'rspec-its', '~>1.0'
   gem 'capybara', '~>2.0'
+  gem 'capybara-email', '~> 2.4'
   gem 'factory_girl_rails', '~>4.0'
   gem 'transpec', '~> 2.3'
 end
@@ -49,3 +50,6 @@ gem 'faker', '~>1.0'
 gem 'will_paginate', '~>3.0'
 gem 'bootstrap-will_paginate', '~>0.0'
 gem 'impressionist', '~> 1.5'
+gem 'mail', '~> 2.5'
+gem 'figaro', '~> 0.7'
+

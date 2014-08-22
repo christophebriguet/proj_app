@@ -35,9 +35,16 @@ class User < ActiveRecord::Base
   def feed
     # This is preliminary. See "Following users" for the full implementation.
     Micropost.where("user_id = ?", id)
-    #microposts
   end  
 
+  def send_password_reset
+    self.password_reset_token = User.digest(User.new_remember_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!(validate: false)
+    UserMailer.password_reset(self).deliver
+  end
+  
+  
   private
   
     def create_remember_token

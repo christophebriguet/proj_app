@@ -168,4 +168,34 @@ describe User do
       its(:feed) { should_not include(unfollowed_post) }
     end    
   end
+  
+  describe "#send_password_reset" do
+    let(:user) { FactoryGirl.create(:user) }
+    
+    before(:each) do
+      ActionMailer::Base.delivery_method = :test
+      ActionMailer::Base.perform_deliveries = true
+      ActionMailer::Base.deliveries = []
+    end
+    
+    after(:each) do
+      ActionMailer::Base.deliveries.clear
+    end
+
+    before do
+      user.send_password_reset
+    end
+    
+    it "saves the time the password reset was sent" do
+      expect(user.reload.password_reset_sent_at).to be_present
+    end  
+    it 'renders the receiver email' do
+      expect(ActionMailer::Base.deliveries.first.to).to eq([user.email])
+    end
+    it "generates a unique password_reset_token each time" do
+      last_token = user.password_reset_token
+      user.send_password_reset
+      expect(user.password_reset_token).not_to eq(last_token)
+    end  
+  end
 end
