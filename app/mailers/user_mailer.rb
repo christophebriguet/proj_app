@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     filepng = "#{Rails.root}/app/assets/images/rails.png"
     if File.file?(filepng)
-      attachments["rails.png"] = File.read(filepng)
+      attachments[filepng] = File.read(filepng)
     end  
     mail(:to => "#{user.name} <#{user.email}>", :subject => "Registered")
   end
