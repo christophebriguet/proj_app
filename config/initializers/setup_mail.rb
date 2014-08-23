@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  :domain               => "gmail.com",
-  :user_name            => ENV["GMAIL_USERNAME"],
-  :password             => ENV["GMAIL_PASSWORD"],
+  :address              => "smtp.hispeed.ch",
+  :port                 => 25,
+  :domain               => "hispeed.ch",
+  :user_name            => ENV["MAIL_USERNAME"],
+  :password             => ENV["MAIL_PASSWORD"],
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
