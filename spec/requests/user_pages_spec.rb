@@ -98,7 +98,7 @@ describe "UserPages" do
       end      
            
       it "should list each micropost" do
-        user.feed.paginate(page: 1).each do |item|
+        user.feed.paginate(page: 1, per_page: 8).each do |item|
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end  
       end
