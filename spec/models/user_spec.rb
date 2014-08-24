@@ -188,10 +188,20 @@ describe User do
     
     it "saves the time the password reset was sent" do
       expect(user.reload.password_reset_sent_at).to be_present
-    end  
+    end
+    it 'should send an email' do
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+    end
     it 'renders the receiver email' do
       expect(ActionMailer::Base.deliveries.first.to).to eq([user.email])
     end
+    it 'should set the subject to the correct subject' do
+      expect(ActionMailer::Base.deliveries.first.subject).to eq("Password Reset")
+    end
+    it 'renders the sender email' do  
+      expect(ActionMailer::Base.deliveries.first.from).to eq(["cbriguetvd@gmail.com"])
+    end        
+    
     it "generates a unique password_reset_token each time" do
       last_token = user.password_reset_token
       user.send_password_reset

@@ -35,7 +35,7 @@ describe "PasswordResetsPages" do
       expect(ActionMailer::Base.deliveries.first.subject).to eq('Password Reset')
     end
     it 'renders the sender email' do  
-      expect(ActionMailer::Base.deliveries.first.from).to eq(['cbriguetvd@swissonline.ch'])
+      expect(ActionMailer::Base.deliveries.first.from).to eq(['cbriguetvd@gmail.com'])
     end    
   end
   
