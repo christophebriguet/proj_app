@@ -17,7 +17,7 @@ GEM
     activemodel (4.1.4)
       activesupport (= 4.1.11)
       builder (~> 3.1)
-    activerecord (4.1.4)
+    activerecord (4.1.14.1)
       activemodel (= 4.1.4)
       activesupport (= 4.1.11)
       arel (~> 5.0.0)
